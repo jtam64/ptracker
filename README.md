@@ -1,5 +1,5 @@
 # pTracker
-
+## Clone of the PTracker app developed by BCIT CIT students
 pTracker is a scheduling app for Nursing students to help them track preceptorship shifts at hospitals.
 #1
 ## Usage
