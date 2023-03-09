@@ -1,0 +1,71 @@
+<!-- Modal for adding shifts in calendar section -->
+<div class="modal" id="addShiftModal" tabindex="-1" aria-labelledby="addShiftModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addShiftModalLabel">Add a Shift</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('addShiftModal')"></button>
+        </div>
+        <div class="modal-body">
+                <!-- Beginning of Form content -->
+                <form id="addForm" action="./shifts" method="POST" class="px-7 overflow-auto" style="max-height: 40vh;">
+                    <div class="date-container mb-3">
+                        <label class="form-label" for="addDateRangePicker">Shift date range</label>
+                        <input type="date" id="addDateRangePicker" name="date" class="form-control" value="2022-01-01">
+                        <input type="date" id="addDateRangePickerEnd" name="end" class="form-control" value="2022-01-01">
+                        
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="siteSelect">Select a Site</label>
+                        <select required name="siteId" id="siteSelect" class="form-select">
+                            <% if (mainSite !== undefined) { %>
+                            <% for (const site of sites) { %>
+                            <% if (site.status !== 'DELETED' && site.name === mainSite) { %>
+                            <option value="<%= site.id %>"> <%= site.name %> </option>
+                            <% } %>
+                            <% } %>
+                            <% for (const site of sites) { %>
+                            <% if (site.status !== 'DELETED' && site.name !== mainSite) { %>
+                            <option value="<%= site.id %>"> <%= site.name %> </option>
+                            <% } %>
+                            <% } %>
+                            <% } else { %>
+                            <option disabled selected value="">Select a Site</option>
+                            <% for (const site of sites) { %>
+                            <% if (site.status !== 'DELETED') { %>
+                            <option value="<%= site.id %>"> <%= site.name %> </option>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="preceptorField" class="form-label">Preceptor - Optional</label>
+                        <input type="text" class="form-control" name="preceptor" id="preceptorField" placeholder="Your Preceptor's Initials" value="">
+                    </div>
+                    <div class="radio-container mb-3">
+                        <% for (const shift of ["Day", "Evening", "Night"]) { %>
+                        <div class="form-check">
+                            <input checked type="radio" name="type" id="addRadioDefault<%= shift %>" value="<%= shift.toUpperCase() %>" class="form-check-input">
+                            <label class="form-check-label" for="addRadioDefault<%= shift %>">
+                                <%= shift %>
+                            </label>
+                        </div>
+                        <% } %>
+                    </div>
+                    <input type="hidden" name="userId" value="<%= user.id %>">
+                <div class="modal-footer">
+                    <input type="submit" form="addForm" value="Save Changes" class="btn btn-primary mr-3">
+                    <button type="button" onclick="modalClose('addShiftModal')" class="btn btn-secondary">
+                        Cancel
+                    </button>
+
+                </div>
+            </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

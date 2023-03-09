@@ -1,0 +1,113 @@
+<div class="text-3xl font-bold pb-8 t_margin">
+    <!-- Display the section title "Section" in a large font size -->
+    Section
+    <p class="text-2xl font-normal">
+        <!-- Display the name of the section in a slightly smaller font size -->
+        <%= sectionName %>
+    </p>
+</div>
+
+<div class="w-1/2 m-auto ">
+    <table id="user_table" class="stripe hover">
+        <thead>
+            <tr>
+                <th>
+                    <!-- Display the column name "Name" in the table header -->
+                    Name
+                </th>
+                <th>
+                    <!-- Display the column name "Email" in the table header -->
+                    Email
+                </th>
+                <th class="text-center">
+                    <!-- Display the column name "Action" in the table header, center-aligned -->
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!--
+                TODO: If theyre an admin, show a dropdown of each section so they can view that specific section, otherwise show their own set as an instructor
+            -->
+            <!-- Loop through each student in the "students" array -->
+            <% for (const student of students) { %>
+                <% if (student.id !== user.id) { %>
+                    <tr>
+                        <td>
+                            <!-- Display the student's name as a link to the update page for that student -->
+                            <a class="focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50" href="<%= "./update/" + student.id %>"> <%= student.name %> </a>
+                        </td>
+                        <td>
+                            <!-- Display the student's email address -->
+                            <%= student.email %>
+                        </td>
+                        <td class="flex justify-center">
+                            <!-- Create a form to delete the student from the section -->
+                            <form id="deleteStudentForm" action="<%= "./sectionDelete/" + student.id %>" method="POST">
+                                <!-- Display a red X icon inside a button element, which will open a modal to confirm the deletion when clicked -->
+                                <button type="button" title="Remove from section" onclick="deleteModal(<%= student.id %>)" class="border hover:bg-red-500 text-red-500 font-semibold  focus:outline-none py-1.5 px-4 rounded">
+                                    <svg
+                                    class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                                   <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("../modals/removeStudentFromSection") %>
+
+<script>
+    $(document).ready(() => {
+        // When the document is ready, initialize a DataTable with the given options
+        $('#user_table').DataTable({
+            lengthChange: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    sortable: false,
+                    targets: 1
+                },
+            ],
+        });
+        // $('#user_table tbody')
+        // .on( 'mouseenter', 'td', function () {
+        //     var colIdx = table.cell(this).index().column;
+ 
+        //     $( table.cells().nodes() ).removeClass( 'highlighted' );
+        //     $( table.column( colIdx ).nodes() ).addClass( 'highlighted' );
+        // } );
+    });
+
+    // Define a function to open a modal dialog
+    function openModal(key, form, button, studentID, shiftID) {
+        document.getElementById(key).style.display = "block";
+        document.getElementById(key).children[0].scrollTop = 0;
+        document.getElementById(key).children[0].classList.remove('opacity-0');
+        document.getElementById(key).children[0].classList.add('opacity-100')
+        document.getElementById(form).setAttribute('action', action=`./sectionDelete/${studentID}`)
+    }
+
+    // Define a function to close a modal dialog
+    function modalClose(key) {
+        document.getElementById(key).children[0].classList.remove('opacity-100');
+        document.getElementById(key).children[0].classList.add('opacity-0');
+        setTimeout(function () {
+            document.getElementById(key).style.display = "none";
+            document.body.removeAttribute('style');
+        }, 100);
+    }
+
+    // Define a function to open a "delete student" modal dialog
+    function deleteModal(studentID) {
+        openModal('deleteStudent', 'deleteForm', 'deleteButton', studentID)
+    }
+
+</script>

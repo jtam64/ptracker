@@ -1,0 +1,8 @@
+<!-- If the user is not currently logged in, display a "Sign In" button that links to the login page. -->
+<% if (session === false) { %>
+    <a href="./auth/login" class="btn btn-primary">Sign In</a>
+<!-- If the user is currently logged in, display a "Sign Out" button that links to the logout page. -->
+<% } else { %>
+    <% } else { %>
+    <a href="./auth/logout" class="btn btn-primary">Sign Out</a>
+<% } %>

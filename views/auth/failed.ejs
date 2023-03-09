@@ -1,0 +1,11 @@
+<!-- Invalid email, notification popup and redirects back to index-->
+<body onload="invalid()">
+</body>
+
+<script>
+    invalid = () => {
+        if(confirm("Invalid email or password. Please try again.")) {
+            window.location.href = "/ptracker";
+        }
+    }
+</script>

@@ -1,0 +1,104 @@
+<!-- The following code creates a fixed navigation bar with links to various pages and user-related functions. -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <!-- The following div contains the branding and menu toggle elements. -->
+    <div class="container px-5">
+        <a class="navbar-brand fw-bold" href=".././">PTracker</a>
+        <!-- The following button toggles the visibility of the navigation menu on smaller screens. -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="bi-list"></i>
+        </button>
+        <!-- The following div contains the links to various pages and user-related functions. -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                <!-- If the user is not logged in, a "Sign In" button is displayed. -->
+                <% if (!user) { %>
+                    <div class="container">
+                        <a href="./auth/login" class="btn btn-primary">Sign In</a>
+                    </div>
+                <% } %>
+                <!-- If the user is logged in, links to various pages and user-related functions are displayed based on the user's role. -->
+                <% if (user) { %>
+                    <% if (user.acceptedNda && (user.section.id !== 1 || user.role === 'ADMIN')) { %>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="./dashboard">Dashboard</a></li>
+                    <% } %>
+                    
+                    <% if (user.role === 'STUDENT') { %>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="./calendar">Calendar</a></li>
+                    <% } %>
+                    
+                    <% if (user.isInstructor()) { %>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="./section">Section</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="./instr_panel">Instructor Panel</a></li>
+                    <% } %>
+
+                    <% if (user.isAdmin()) { %>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="./admin">Admin Panel</a></li>
+                    <% } %>
+
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="./faq">FAQ</a></li>
+            </ul>
+
+            <!-- The following div contains the user-related elements on the right side of the navigation bar. -->
+            <div class="">
+                <div class="flex items-center space-x-2 ml-10 ">
+                    <!-- If the user has accepted the NDA and is not a student in section 1, a toggle for email notifications is displayed. -->
+                    <% if (user.acceptedNda && (user.section.id !== 1 || user.role === 'ADMIN')) { %>
+                        <div class="flex items-center justify-center">
+                            <label for="emailNotif" class="flex items-center cursor-pointer -mb-0.5">
+                                <!-- The following div contains the label text for the email notification toggle. -->
+                                <div class="ml-3 white:text-gray-700 font-medium px-2">
+                                    Email Notifications
+                                </div>
+                                <div class="relative">
+                                    <!-- The following form contains the email notification toggle. -->
+                                    <form id="emailForm" action="<%= "/email/changeEmailStatus/" + user.id %>" method="POST">
+                                    <!-- If the user has email notifications enabled, the toggle is checked and displays the "ON" label. -->
+                                    <% if (user.emailNotif) { %>
+                                        <input onclick="changeNotif()" value="OFF" type="checkbox" id="emailNotif" class="sr-only" checked>
+                                        <div class="block bg-gray-600 w-16 h-8 rounded-full mr-3"><p class="text-xs	text-left text-white pl-1.5 py-2">ON</p></div>
+                                        <div class="dot absolute left-1 top-1 bg-green-100 w-7 h-6 rounded-full transition"></div>
+                                    <% } else { %>
+                                        <input onclick="changeNotif()" value="ON" type="checkbox" id="emailNotif" class="sr-only">
+                                        <div class="block bg-gray-600 w-16 h-8 rounded-full mr-3"><p class="text-xs	text-right text-white pr-1.5 py-2">OFF</p></div>
+                                        <div class="dot absolute left-1 top-1 bg-white w-7 h-6 rounded-full transition"></div>
+                                    <% } %>
+                                    </form>
+                                </div>
+                            </label>
+                        </div>
+                    <% } %>
+                    <!-- The following span contains the user's name. -->
+                    <span class=" text-gray-700 font-medium">
+                        <%= user.name %>
+                    </span>
+                    <!-- The following div contains the user's profile picture. -->
+                    <div>
+                        <img class="h-8 rounded-full mt-1 shadow-sm " src="<%= user.picture %>" referrerPolicy="no-referrer" alt="">
+                    </div>
+                    <!-- The following anchor tag is the logout button. -->
+                    <a href="./auth/logout" id="logoutButton" class="inline-flex items-center text-white py-2 px-4 rounded">
+                        <!-- The following image is the logout icon. -->
+                        <img src="./assets/logout.png" width="20" height="20" class="fill-current w-4 h-4 mr-2"/>
+                        
+                        Logout
+                    </a>
+                </div>
+            </div>
+        <% } %>
+
+        
+            <!-- <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                    <i class="bi-chat-text-fill me-2"></i>
+                    <span class="small">Login</span>
+                </span>
+            </button> -->
+        </div>
+    </div>
+</nav>
+<script>
+    function changeNotif(userId) {
+        document.getElementById('emailForm').submit()
+    }
+</script>

@@ -1,0 +1,34 @@
+<!-------------------
+-   Reset button    -
+-------------------->
+<div class="modal" id="clearPtracker" tabindex="-1" aria-labelledby="clearPtrackerLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="clearPtrackerLabel">Reset Ptracker Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('clearPtracker')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-7 pb-3 d-flex justify-content-start align-items-center w-100">
+                <p class="whitespace-pre-line text-secondary">
+                    Are you sure you want to proceed with resetting Ptracker?
+                    This will permanently delete all the data that is currently on Ptracker.
+                </p>
+            </div>
+            <!-- Beginning of Form content -->
+            <form id="deleteForm" action="./admin/deletePtrackerData" method="POST">
+                <input type="hidden" name="confirmation" value="yesIWasSubmittedViaTheForm">
+            </form>
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button type="submit" form="deleteForm" class="w-100 btn btn-danger">
+                    Delete
+                </button>
+                <button type="button" onclick="modalClose('clearPtracker')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

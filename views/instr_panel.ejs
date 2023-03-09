@@ -1,0 +1,143 @@
+<!-- The following div contains the heading of the Instructor Panel section. -->
+<div class="text-center fw-bold fs-2 t_margin">
+    Instructor Panel
+</div>
+<!-- This div contains a table that displays user data, including name, role, section, and a delete button. -->
+<div class="shadow-xl p-6 rounded-md">
+    <table id="user_table" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <!-- Table header row containing the headings for the table columns. -->
+                <th>Name</th>
+                <th>Role</th>
+                <th>Section</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <!-- Loop through each user in the users array and display their data in a table row. -->
+        <% for (const siteUser of users) { %>
+            <!-- If the current user is the same as the logged in user, skip displaying their row. -->
+            <% if (siteUser.id === user.id) continue; %>
+            <!-- If the current user is a student in section 1, skip displaying their row. -->
+            <% if (siteUser.role === 'INSTRUCTOR' || siteUser.role === 'ADMIN') continue; %>
+            <% if (siteUser.sectionId === 1 && siteUser.role === 'STUDENT') { %>
+            <%}%>
+            <tr>
+                <!-- Display the user's name. -->
+                <td><%= siteUser.name %></td>
+                <td><%= siteUser.role %></td>
+                <td>
+                    <% if (siteUser.role === 'STUDENT') { %>
+                        <form action="instr_panel/changeSection" method="post">
+                            <input type="hidden" value="<%= siteUser.id %>" name="userId">
+                            <select required name="section" onchange="submit(this);" class="form-select form-select-lg mb-3
+                            text-base text-gray-700
+                            bg-white border border-gray-300
+                            rounded transition ease-in-out
+                            py-2 focus:border-primary focus:outline-none">
+                                <% for (const section of sections) { %>
+                                    <option value="<%= section.id %>" <% if (siteUser.sectionId === section.id) { %> selected <% } %>>
+                                        <%= section.name %>
+                                    </option>
+                                <% } %>
+                            </select>
+                        </form>
+                    <% } %>
+                </td>
+                <td>
+                    <!-- Display a delete button that allows the admin to delete the user. -->
+                    <button title="Delete" id="userDeleteButton" onclick="deleteModalUser(<%= siteUser.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
+                        <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    
+</div>
+    
+
+
+
+<script>
+
+    // Opens a modal window identified by key
+    function openModal(key) {
+        document.getElementById(key).style.display = "block";
+        document.getElementById(key).children[0].scrollTop = 0;
+        document.getElementById(key).children[0].classList.remove('opacity-0');
+        document.getElementById(key).children[0].classList.add('opacity-100')
+
+    }
+
+    // Closes a modal window identified by key
+    function modalClose(key) {
+        document.getElementById(key).children[0].classList.remove('opacity-100');
+        document.getElementById(key).children[0].classList.add('opacity-0');
+        setTimeout(function () {
+            document.getElementById(key).style.display = "none";
+            document.body.removeAttribute('style');
+        }, 100);
+    }
+
+    // Opens the modal window for deleting a site
+    function deleteModal(siteID) {
+        openModal('deleteSite')
+        document.getElementById('deleteForm').setAttribute('action', action=`/admin/siteDelete/${siteID}`)
+    }
+    
+    // Opens the modal window for deleting an instructor
+    function deleteModalInstructor(instructorID) {
+        openModal('instructorDelete')
+        document.getElementById('deleteInstructor').setAttribute('action', action=`./admin/userDelete/${instructorID}`)
+    }
+
+    // Opens the modal window for deleting a user
+    function deleteModalUser(userID) {
+        openModal('deleteUser')
+        document.getElementById('userDelete').setAttribute('action', action=`./admin/userDelete/${userID}`)
+    }
+
+    // Opens the add section modal
+    function addSectionModal() {
+        openModal('addSectionModal')
+    }
+
+    // Opens the delete section confirmation modal with the provided sectionID and sectionsLength
+    function deleteSectionModal(sectionID, sectionsLength){
+        openModal('sectionDeleteModal');
+        console.log(sectionsLength);
+        document.getElementById('deleteSection').setAttribute('action', action=`/admin/deleteSection/${sectionID}/${sectionsLength}?_method=DELETE`);
+    }
+
+    // Submits the form containing the select element that was changed
+    submit = (select) => {
+        const form = select.form;
+        form.submit();
+    }
+
+    // Sets up the DataTable for the user_table
+    $(document).ready(() => {
+        $('#user_table').DataTable({
+            lengthChange: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    sortable: false,
+                    targets: [1, 2]
+                },
+            ],
+            "createdRow": function( row, data, dataIndex ) {
+                let selector = row.children.item(2).querySelector('select')
+                if(selector && selector.value == 1){
+                    $(row).addClass("pending")
+                }
+            }
+        });
+    });
+</script>

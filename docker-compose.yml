@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: isajrqwoihjwaor
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: Columbiabc1!
+      MARIADB_DATABASE: ptracker
+      MARIADB_ROOT_HOST: db
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysql $$MARIADB_DATABASE -u$$MARIADB_USER -p$$MARIADB_PASSWORD -e 'SELECT 1;' || exit 1"
+        ]
+      timeout: 5s
+      retries: 10
+    volumes:
+      - ptracker_db_data:/var/lib/mysql
+
+  app:
+    command: npm run dev
+    build: .
+    environment:
+      DEBUG: true
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: Columbiabc1!
+      MARIADB_DATABASE: ptracker
+      MARIADB_ROOT_HOST: db
+      APP_URL: http://localhost
+    ports:
+      - 8007:8007
+    depends_on:
+      db:
+        condition: service_healthy
+    # volumes:
+    #   - .:/app
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  ptracker_db_data:

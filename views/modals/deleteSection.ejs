@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal" id="sectionDeleteModal" tabindex="-1" aria-labelledby="sectionDeleteModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="sectionDeleteModalLabel">Delete Section Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('sectionDeleteModal')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-7 pb-3 d-flex justify-content-start align-items-center w-100">
+                <p class="whitespace-pre-line text-secondary">
+                    Are you sure you want to delete this section?
+                    This will permanently be removed from Ptracker
+                </p>
+            </div>
+            <!-- Beginning of Form content -->
+            <form id="deleteSection" action="#" method="POST">
+            </form>
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button type="submit" form="deleteSection" class="w-100 btn btn-danger" id="deleteButton">
+                    Delete
+                </button>
+                <button type="button" onclick="modalClose('sectionDeleteModal')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

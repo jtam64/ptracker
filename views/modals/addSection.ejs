@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div class="modal" id="addSectionModal" tabindex="-1" aria-labelledby="addSectionModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addSectionModalLabel">Add a Section</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('addSectionModal')"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Beginning of Form content -->
+            <form id="addSectionForm" action="admin/addSection" method="POST" class="px-7 overflow-x-hidden overflow-y-auto"
+                      style="max-height: 40vh;">
+                    <div class="flex flex-col">
+                        <label class="text-gray-800" for="sectionName">Section Name:</label>
+                        <input class="form-control rounded" type="text" id="sectionName" name="sectionName" value="">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-gray-800 pt-3" for="sectionInstructor">Section Instructor:</label>
+                        <select required name="sectionInstructor" id="sectionInstructor"  class="form-select form-select-sm mb-3">
+                            <!-- Check if instructor is already in charge of a section -->
+                            <% const existingInstructors = []; %>
+                            <% for (const section of sections) { %>
+                                <% existingInstructors.push(section.instructorId); %>
+                            <% } %>
+                            <% for (const section of sections) { %>
+                                <% if (section.id === 1) continue; %>
+                                <% for (const siteUser of users) { %>
+                                    <% if ((siteUser.role === 'INSTRUCTOR' || siteUser.role === 'ADMIN') && !(existingInstructors.includes(siteUser.id))) { %>
+                                        <option value="<%= siteUser.id %>" <% if (section.instructorId === siteUser.id) { %> selected <% } %>>
+                                            <%= siteUser.name %>
+                                        </option>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        </select>
+                    </div>
+            </form>    
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button id="addButton" type="submit" form="addSectionForm" class="w-100 btn btn-danger" value="Add Section">
+                    Add Section
+                </button>
+                <button type="button" onclick="modalClose('addSectionModal')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+

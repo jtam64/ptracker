@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal" id="addSiteModal" tabindex="-1" aria-labelledby="addSiteModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addSiteModalLabel">Add a Site</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('addSiteModal')"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Beginning of Form content -->
+            <form id="addForm" action="addSite" method="POST">
+                <div class="flex flex-col">
+                    <label class="text-gray-800" for="siteName">Site Name:</label>
+                    <input class="rounded" type="text" id="siteName" name="site" value="">
+                </div>
+            </form>
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button id="addButton" type="submit" form="addForm" class="w-100 btn btn-danger" value="<%= "Add Site" %>">
+                    Add Site
+                </button>
+                <button type="button" onclick="modalClose('addSiteModal')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+

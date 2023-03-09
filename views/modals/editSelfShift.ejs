@@ -1,0 +1,49 @@
+<!-- Modal for editing shifts in calendar section -->
+<div class="modal" id="editShiftModal" tabindex="-1" aria-labelledby="editShiftModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editShiftModalLabel">Edit a Shift</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('editShiftModal')"></button>
+        </div>
+        <div class="modal-body">
+            <form id="editForm" action="./shifts" method="POST" class="modal-body" style="max-height: 40vh; overflow-x: hidden; overflow-y: auto;">
+                <div class="date-container mb-4 text-gray-400">
+                    <label class="form-label" for="editDatePicker">Shift date:</label>
+                    <input type="hidden" name="date" id="editDateValue" value="2022-01-01">
+                    <input disabled type="date" id="editDatePicker" class="form-control" value="2022-01-01">
+                </div>
+                <div class="site-container mb-3">
+                    <label class="form-label" for="siteSelect">Select a Site:</label>
+                    <select required name="siteId" id="siteSelect" class="form-select">
+                        <option disabled value="">Select a Site</option>
+                        <% for (const site of sites) { %>
+                            <% if (site.status !== 'DELETED') { %>
+                                <option value="<%= site.id %>" id="site<%= site.id %>"> <%= site.name %> </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="preceptor-container mb-3">
+                    <label for="edit-preceptorField" class="form-label">Preceptor - Optional</label>
+                    <input type="text" class="form-control" name="preceptor" id="edit-preceptorField" placeholder="Your Preceptor's Initials" value="">
+                </div>
+                <div class="radio-container mb-3">
+                    <% for (const shift of ["Day", "Evening", "Night"]) { %>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="type" id="editRadioDefault<%= shift %>" value="<%= shift.toUpperCase() %>" class="form-check-input">
+                            <label class="form-check-label" for="editRadioDefault<%= shift %>"><%= shift %></label>
+                        </div>
+                    <% } %>
+                </div>
+                <input type="hidden" name="userId" value="<%= user.id %>">
+                <div class="modal-footer">
+                    <input type="submit" form="editForm" value="Save Changes" class="btn btn-primary mr-3">
+                    <button type="button" onclick="deleteModal()" class="btn btn-danger">Delete Shift</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+

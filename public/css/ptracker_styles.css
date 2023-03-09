@@ -1,0 +1,22 @@
+.t_margin {
+    margin-top: 125px;
+}
+
+.modal {
+    z-index: 1050;
+}
+.highlighted{
+    background: rgba(84, 136, 28, 0.3) !important;
+}
+#container-app{
+    height: 84vh;
+}
+
+#calendar > div.fc-view-harness.fc-view-harness-passive > div > table > thead > tr > th:nth-child(3) > div > div > div > table > tbody > tr:nth-child(2){
+    font-size: 13px;
+    color: #2C3E50;
+}
+
+.highlighted{
+    background: rgba(84, 136, 28, 0.3) !important;
+}

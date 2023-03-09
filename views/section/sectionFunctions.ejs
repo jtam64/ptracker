@@ -1,0 +1,26 @@
+<%
+// Define a function to convert a month number (0-11) to its corresponding string representation
+convertMonth = function(monthNum) {
+    return [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    ][monthNum];
+}
+
+// Define a function to check if a shift is in the current month
+checkShiftDay = function(shift) {
+    // Split the shift's date string into an array of year, month, and day, and create a new Date object with these values
+    const splitDate = shift.date.toISOString().split('T')[0].split('-')
+    const date = new Date()
+    const shiftMonth = new Date(splitDate[0],splitDate[1] - 1,splitDate[2])
+
+    // Get the month and year of the shift as a string
+    const monthYear = `${convertMonth(shiftMonth.getMonth())} ${shiftMonth.getFullYear()}`
+
+    // Get the current month and year as a string
+    const currentMonthYear = `${convertMonth(date.getMonth())} ${date.getFullYear()}`;
+
+    // Return true if the shift's month and year match the current month and year
+    return monthYear === currentMonthYear;
+}
+
+%>

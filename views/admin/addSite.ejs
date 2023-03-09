@@ -1,0 +1,30 @@
+<a href="/admin" class="bg-red-500 hover:bg-red-400 text-white text-center font-semibold py-1.5 px-4 hover:border-red-500 rounded"> Back </a>
+<!-- Creates a hyperlink to the admin page with a red background and white text, which changes color on hover -->
+<table class="table-auto w-auto mr-auto ml-auto border border-solid border-black border-collapse">
+    <h1 class="font-bold text-3xl text-center pb-1.5">Add A Site</h1>
+    <!-- Adds a heading to the table with text "Add A Site" -->
+
+    <tr>
+        <th class="text-left border border-solid border-black border-collapse">
+            Site Name
+        </th>
+        <!-- Adds a table header with the text "Site Name" -->
+    </tr>
+
+    <form id="addForm" action="addSite" method="POST">
+    <!-- Creates a form with an ID "addForm" that submits to the "addSite" URL with the HTTP POST method -->
+
+        <tr>
+            <td>
+                <input name="site">
+                <!-- Adds an input field for the user to enter a site name -->
+            </td>
+        </tr>
+    </form>
+</table>
+
+<div class="flex items-center justify-center pt-2.5">
+    <input type="submit" form="addForm" value="<%= "Add Site" %>"
+           class="save-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3">
+           <!-- Creates a submit button for the form with the text "Add Site", which is styled with various CSS classes -->
+</div>

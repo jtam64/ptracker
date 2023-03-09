@@ -1,0 +1,129 @@
+<!-- ---------This is the FAQ page------------ -->
+
+<center>
+  <h2>Frequently Asked Questions</h2>
+  </center>
+  
+  <div class="tabset">
+    <!-- Student Tab -->
+    <input type="radio" name="tabset" id="tab1" aria-controls="Student" checked>
+    <label for="tab1">Student</label>
+    <!-- Instructor Tab -->
+    <input type="radio" name="tabset" id="tab2" aria-controls="Instructor">
+    <label for="tab2">Instructor</label>
+    <!-- Admin Tab -->
+    <input type="radio" name="tabset" id="tab3" aria-controls="Admin">
+    <label for="tab3">Admin</label>
+    
+    <div class="tab-panels">
+  
+      <section id="Student" class="tab-panel">
+        <p><b>Where can I print my schedule?</b><br>
+          The print button can be found in the dashboard section on the right side of the page
+          </p>
+          
+          <p><b>How can I input a shift on the calendar?</b><br>
+          To input a shift on the calender, click the calendar tab on the top of the web page. In this section you can click or highlight a date
+          to add a shift.</p>
+  
+          <p><b>How to delete a shift on the calender?</b><br>
+          To delete a shift, click the calendar tab on the top of the web page. In this section you should see your shifts, left click and when the prompt pops up, click delete shift.</p>
+      </section>
+  
+      <section id="Instructor" class="tab-panel">
+        <p><b>How to move a student to a section?</b><br>
+          Search for the student in the search bar and under section, you can select what section you want to move the student to.
+          </p>
+  
+          <p><b>How to remove a student from a section?</b><br>
+          Search for the student in the search bar and under delelte, click the delete button. However if you want to keep student in
+           the database, you can move the student to the "Pending User Section" section.
+          </p>
+      </section>
+  
+      <section id="Admin" class="tab-panel">
+        <p><b>How to change a user's role?</b><br>
+          In the admin panel, click the users tab and search for the user. Under role, you can select what role you want to change the user to.
+          </p>
+  
+          <p><b>How to view instructors/admins?</b><br>
+          In the admin panel, click the instructors tab. This will show all the instructors and admins.
+          </p>
+  
+          <p><b>How to add a new site?</b><br>
+          In the admin panel, on the right side of the page, click add site.
+          </p>
+  
+          <p><b>How to add a new section?</b><br>
+          In the admin panel, on the right side of the page, click add section.
+          </p>
+      </section>
+  
+    </div>
+    
+  </div>
+  
+  <!-- ------------------------ -->
+  <!-- STYLING FOR THE FAQ PAGE -->
+  <!-- ------------------------ -->
+  
+  <style>
+  
+  .tabset > input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+  }
+  
+  .tabset .tab-panel {
+    display: none;
+  }
+  
+  .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+  .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+  .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3){
+    display: block;
+  }
+  
+  .tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px 8px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px 5px 0 0;
+    color: rgb(41,55,240);
+    margin-right: -2px;
+    margin-left: -2px;
+  }
+  
+  .tabset > label:hover {
+    border-color: rgba(73, 80, 87, 0.1);
+    padding: 10px 15px 8px;
+  }
+  
+  .tabset > input:focus + label {
+    color: rgb(73, 80, 87);
+  }
+  
+  .tabset > input:checked + label {
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+    color: rgb(73, 80, 87)
+  }
+  
+  .tab-panel {
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  body {
+    padding: 30px;
+  }
+  
+  .tabset {
+    max-width: 65em;
+  }
+  </style>

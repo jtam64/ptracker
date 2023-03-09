@@ -1,0 +1,418 @@
+<div class="text-center fw-bold fs-2 t_margin">
+    Admin Panel
+</div>
+<!-- Creates a centered heading with the text "Admin Panel", which is bold and has a font size of 2 -->
+<style>
+    .tab-pane {
+      display: none;
+    }
+</style>
+
+<div class="position-relative">
+    <!-- Creates a button that is positioned at the bottom right corner of its container div, with a red background and white text, which when clicked will call the "openModal" function with the argument "clearPtracker" -->
+    <button onclick="openModal('clearPtracker')" class="position-absolute end-0 bottom-0 bg-danger text-white text-center font-weight-bold py-2 px-4 rounded"> Clear Ptracker </button>
+</div>
+  
+
+
+<!-----------------
+-   Tabs Labels   -
+------------------>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="tab1Btn" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Users</button>
+      <button class="nav-link" id="tab2Btn" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Instructors</button>
+      <button class="nav-link" id="tab3Btn" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Sites</button>
+      <button class="nav-link" id="tab4Btn" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Sections</button>
+    </div>
+</nav>
+
+<!-------------------
+-   Tabs contents   -
+-------------------->
+<div class="tab-content" id="nav-tabContent">
+
+    <!-- Users tab content-->
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1Btn">
+        <!-- Creates a table that displays a list of users and their information -->
+        <table id="user_table" class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <!-- Defines the columns of the table header -->
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Section</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <!-- Loops through each user and checks if they meet certain conditions -->
+            <% for (const siteUser of users) { %>
+                <% if (siteUser.id === user.id) continue; %>
+                <% if (siteUser.sectionId === 1 && siteUser.role === 'STUDENT') { %>
+                <%}%>
+                <tr>
+                    <!-- Displays the user's name -->
+                    <td><%= siteUser.name %></td>
+                    <td>
+                        <form action="admin/changeRole" method="post">
+                            <!-- Creates a form to change the user's role -->
+                            <input type="hidden" value="<%= siteUser.id %>" name="userId">
+                            <!-- Creates a hidden input field with the user's ID -->
+                            <select required name="role" onchange="submit(this);" class="form-select form-select-lg mb-3
+                            text-base text-gray-700
+                            bg-white border border-gray-300
+                            rounded transition ease-in-out
+                            py-2 focus:border-primary focus:outline-none">
+                                <option value="STUDENT" <% if (siteUser.role === 'STUDENT') { %> selected <% } %>>
+                                    Student
+                                </option>
+                                <option value="INSTRUCTOR" <% if (siteUser.role === 'INSTRUCTOR') { %> selected <% } %>>
+                                    Instructor
+                                </option>
+                                <option value="ADMIN" <% if (siteUser.role === 'ADMIN') { %> selected <% } %>>
+                                    Admin
+                                </option>
+                                <!-- Provides options to select the user's role, and sets the selected option based on their current role -->
+                            </select>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <% if (siteUser.role === 'STUDENT') { %>
+                            <!-- If the user is a student, creates a form to change their section -->
+                            <form action="admin/changeSection" method="post">
+                                <!-- Creates a hidden input field with the user's ID -->
+                                <input type="hidden" value="<%= siteUser.id %>" name="userId">
+                                <select required name="section" onchange="submit(this);" class="form-select form-select-lg mb-3
+                                text-base text-gray-700
+                                bg-white border border-gray-300
+                                rounded transition ease-in-out
+                                py-2 focus:border-primary focus:outline-none">
+                                    <% for (const section of sections) { %>
+                                        <option value="<%= section.id %>" <% if (siteUser.sectionId === section.id) { %> selected <% } %>>
+                                            <%= section.name %>
+                                        </option>
+                                        <!-- Creates a dropdown list to select the user's section, and sets the selected option based on their current section -->
+                                    <% } %>
+                                </select>
+                            </form>
+                        <% } %>
+                    </td>
+                    <td>
+                        <button title="Delete" id="userDeleteButton" onclick="deleteModalUser(<%= siteUser.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
+                            <!-- Creates a button to delete the user, which when clicked calls the "deleteModalUser" function with the user's ID -->
+                            <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Instructors tab content -->
+    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2Btn">
+         <!-- Creates a table to display the list of instructors -->
+        <table id="instructor_table" class="table table-striped table-hover">
+
+            <thead>
+            <tr>
+                <!-- Defines the columns of the table header -->
+                <th>Instructor</th>
+                <th>Section</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% for (const instructor of users) { %>
+                 <!-- Loops through the list of users to find instructors -->
+                <% if (instructor.role !== 'STUDENT' && instructor.id !== user.id) { %>
+                    <!-- Checks if the current user is an instructor and not the current user -->
+                    <tr>
+                        <td><%= instructor.name %></td>
+                        <!-- Displays the name of the instructor -->
+                        <td><%= instructor.section.name %></td>
+                        <!-- Displays the section that the instructor is teaching -->
+                        <td>
+                            <button title="Delete" id="instructorDeleteButton" onclick="deleteModalInstructor(<%= instructor.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
+                                 <!-- Creates a button to delete the instructor, which when clicked calls the "deleteModalInstructor" function with the instructor's ID -->
+                                <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sites tab content-->
+    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3Btn">
+        <!-- Creates a table to display the list of sites -->
+
+        <div class="d-flex justify-content-end pt-2.5 pb-2.5">
+            <button onclick="addSiteModal()" class="btn btn-primary rounded-pill py-1.5 px-4 me-3">Add Site</button>
+        </div>
+
+        <table id="site_table" class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <!-- Defines the columns of the table header -->
+                <th>Site Name</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% for (const site of sites) { %>
+                <!-- Loops through the list of sites -->
+                <% if (site.status !== 'DELETED') { %>
+                    <!-- Checks if the site has not been deleted -->
+                    <tr>
+                        <td><%= site.name %></td>
+                        <!-- Displays the name of the site -->
+                        <td class="flex">
+                            <button title="Delete" onclick="deleteModal(<%= site.id %>)" class="border hover:bg-red-500 text-red-500 font-semibold  focus:outline-none py-1.5 px-4 rounded">
+                                <!-- Creates a button to delete the site, which when clicked calls the "deleteModal" function with the site's ID -->
+                                <svg
+                                        class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } %>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- Sections tab content-->
+    <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4Btn">
+         <!-- Add Section Button -->
+        <div class="d-flex justify-content-end pt-2.5 pb-2.5">
+            <button onclick="addSectionModal()" class="btn btn-primary rounded-pill py-1.5 px-4 me-3">Add Section</button>
+        </div>
+        <!-- Section Table -->
+        <table id="section_table" class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Instructor</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% for (const section of sections) { %>
+                <!-- Skip the first section as it's default -->
+                <% if (section.id === 1) continue; %>
+                <tr>
+                    <!-- Section Name -->
+                    <td><%= section.name %></td>
+                    <td>
+                        <!-- Select Instructor form -->
+                        <form action="admin/changeSectionInstructor" method="post">
+                            <input type="hidden" value="<%= section.id %>" name="sectionId">
+                            <!-- Select Instructor dropdown -->
+                            <select required name="instructor" onchange="submit(this);" class="form-select form-select-lg mb-3
+                            text-base text-gray-700
+                            bg-white border border-gray-300
+                            rounded transition ease-in-out
+                            py-2 focus:border-primary focus:outline-none">
+                            <!-- Populate Instructor options -->
+                                <% for (const siteUser of users) { %>
+                                    <% if (siteUser.role === 'INSTRUCTOR' || siteUser.role === 'ADMIN') { %>
+                                        <option value="<%= siteUser.id %>" <% if (section.instructorId === siteUser.id) { %> selected <% } %>>
+                                            <%= siteUser.name %>
+                                        </option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <!-- Delete Section button -->
+                        <button type="button" title="Delete" id="sectionDeleteButton" onclick="deleteSectionModal(<%= section.id %>, <%= sections.length %>)" class="btn border text-danger font-weight-bold focus:outline-none py-1.5 px-4 rounded">
+                          <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                          </svg>
+                        </button>
+                      </td>                      
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+  </div>
+
+<!-------------------
+-   Reset button    -
+-------------------->
+<div class="modal" id="clearPtracker" tabindex="-1" aria-labelledby="clearPtrackerLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="clearPtrackerLabel">Reset Ptracker Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('clearPtracker')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-7 pb-3 d-flex justify-content-start align-items-center w-100">
+                <p class="whitespace-pre-line text-secondary">
+                    Are you sure you want to proceed with resetting Ptracker?
+                    This will permanently delete all the data that is currently on Ptracker.
+                </p>
+            </div>
+            <!-- Beginning of Form content -->
+            <form id="deleteForm" action="./admin/deletePtrackerData" method="POST">
+                <input type="hidden" name="confirmation" value="yesIWasSubmittedViaTheForm">
+            </form>
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button type="submit" form="deleteForm" class="w-100 btn btn-danger">
+                    Delete
+                </button>
+                <button type="button" onclick="modalClose('clearPtracker')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<%- include("../modals/deleteStudent") %>
+
+<%- include("../modals/deleteInstructor") %>
+
+<%- include("../modals/deleteSite") %>
+
+<%- include("../modals/addSection") %>
+
+<%- include("../modals/deleteSection") %>
+
+<%- include("../modals/addSite") %>
+
+
+<script>
+//// move to global js file
+///?????????? might not need this
+    function openModal(key) {
+        document.getElementById(key).style.display = "block";
+        document.getElementById(key).children[0].scrollTop = 0;
+        document.getElementById(key).children[0].classList.remove('opacity-0');
+        document.getElementById(key).children[0].classList.add('opacity-100')
+
+    }
+
+///?????????? might not need this
+    function modalClose(key) {
+        document.getElementById(key).children[0].classList.remove('opacity-100');
+        document.getElementById(key).children[0].classList.add('opacity-0');
+        setTimeout(function () {
+            document.getElementById(key).style.display = "none";
+            document.body.removeAttribute('style');
+        }, 100);
+    }
+
+    function deleteModal(siteID) {
+        openModal('deleteSiteModal')
+        document.getElementById('deleteForm').setAttribute('action', action=`./admin/siteDelete/${siteID}`)
+    }
+
+    function deleteModalInstructor(instructorID) {
+        openModal('instructorDeleteModal')
+        document.getElementById('deleteInstructor').setAttribute('action', action=`./admin/userDelete/${instructorID}`)
+    }
+
+    function deleteModalUser(userID) {
+        openModal('deleteUserModal')
+        document.getElementById('userDelete').setAttribute('action', action=`./admin/userDelete/${userID}`)
+    }
+
+    function addSectionModal() {
+        openModal('addSectionModal')
+    }
+
+    function addSiteModal() {
+        openModal('addSiteModal')
+    }
+
+    function deleteSectionModal(sectionID, sectionsLength){
+        openModal('sectionDeleteModal');
+        console.log(sectionsLength);
+        document.getElementById('deleteSection').setAttribute('action', action=`./admin/deleteSection/${sectionID}/${sectionsLength}?_method=DELETE`);
+    }
+
+    submit = (select) => {
+        const form = select.form;
+        form.submit();
+    }
+    $(document).ready(() => {
+        $('#user_table').DataTable({
+            lengthChange: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    sortable: false,
+                    targets: [1, 2]
+                },
+            ],
+            "createdRow": function( row, data, dataIndex ) {
+                let selector = row.children.item(2).querySelector('select')
+                if(selector && selector.value == 1){
+                    $(row).addClass("pending")
+                }
+            }
+        });
+        $('#section_table').DataTable({
+            lengthChange: false,
+            paging: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    sortable: false,
+                    targets: [1, 2]
+                },
+            ],
+        });
+        $('#instructor_table').DataTable({
+            pageLength: 12,
+            lengthChange: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    sortable: false,
+                    targets: [1]
+                },
+            ],
+            "createdRow": function( row, data, dataIndex ) {
+                if(data[1] === "Pending Users Section"){
+                    $(row).addClass("pending")
+                }
+
+            }
+        });
+        $('#site_table').DataTable({
+            lengthChange: false,
+            paging: false,
+            searching: false,
+            columnDefs: [
+                {
+                    sortable: false,
+                    targets: [1]
+                },
+            ],
+        });
+    });
+</script>
