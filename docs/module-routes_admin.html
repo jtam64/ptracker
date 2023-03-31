@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>routes/admin - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module.exports.html#getAdminRecipients">getAdminRecipients</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#getSectionInstructorRecipient">getSectionInstructorRecipient</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isInstructor">isInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isStudent">isStudent</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#send">send</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToAdmins">sendToAdmins</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToSectionInstructor">sendToSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.ensureAuthenticated">ensureAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.forwardIfAuthenticated">forwardIfAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAuthenticated">isAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isInstructor">isInstructor</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="module-app.html">app</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-app.html#.setviewengine">set view engine</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.use404errorhandler">use 404 error handler</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecookieSession">use cookieSession</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecors">use cors</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useejsLayouts">use ejsLayouts</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usejson">use json</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usepassport">use passport</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useurlencoded">use urlencoded</a></li></ul></li><li><a href="module-routes_admin.html">routes/admin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.DELETE/deleteSection/:id/:length">DELETE /deleteSection/:id/:length</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/resetPtracker">GET /resetPtracker</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/userDelete/:id">GET /userDelete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GETadmin/">GET admin/</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/addSection">POST /addSection</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeRole">POST /changeRole</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeSectionInstructor">POST /changeSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/deletePtrackerData">POST /deletePtrackerData</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/siteDelete/:id">POST /siteDelete/:id</a></li></ul></li><li><a href="module-routes_authRoutes.html">routes/authRoutes</a></li><li><a href="module-routes_dataRoutes.html">routes/dataRoutes</a></li><li><a href="module-routes_emailRoutes.html">routes/emailRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/changeEmailStatus/:userId">POST email/changeEmailStatus/:userId</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/instructorDeleted">POST email/instructorDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/newUser">POST email/newUser</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftCreated">POST email/shiftCreated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftDeleted">POST email/shiftDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftUpdated">POST email/shiftUpdated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/userAssignedSection">POST email/userAssignedSection</a></li></ul></li><li><a href="module-routes_indexRoutes.html">routes/indexRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~convertMonth">convertMonth</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findMainSite">findMainSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findNameOfSite">findNameOfSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~getShifts">getShifts</a></li></ul></li><li><a href="module-routes_instructorRoutes.html">routes/instructorRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.GETinstructor/">GET instructor/</a></li><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.POSTinstructor/changeSection">POST instructor/changeSection</a></li></ul></li><li><a href="module-routes_shiftRoutes.html">routes/shiftRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.DELETE/shifts/delete/:id">DELETE /shifts/delete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.POST/shifts/">POST /shifts/</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.PUT/shifts/:id">PUT /shifts/:id</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#flashMessages">flashMessages</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#ndaChecker">ndaChecker</a></li><li><a href="global.html#passUser">passUser</a></li><li><a href="global.html#sectionChecker">sectionChecker</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">routes/admin</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>This file exports an Express router that handles admin-related routes.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+                <div class="description usertext"><p>This file exports an Express router that handles admin-related routes.</p></div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".DELETE/deleteSection/:id/:length"><span class="type-signature type-signature-static">(static) </span>DELETE /deleteSection/:id/:length<span class="signature">(id, length, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for deleting a section.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line219">line 219</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the section to delete.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The number of sections in the system.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the delete function of the Section model and redirects to the admin page.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".GET/resetPtracker"><span class="type-signature type-signature-static">(static) </span>GET /resetPtracker<span class="signature">(ensureAuthenticated, isAdmin, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for rendering the resetPtracker page.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ensureAuthenticated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is authenticated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isAdmin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is an admin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that renders the resetPtracker page.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".GET/userDelete/:id"><span class="type-signature type-signature-static">(static) </span>GET /userDelete/:id<span class="signature">(ensureAuthenticated, isAdmin, id, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for deleting a user.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line168">line 168</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ensureAuthenticated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is authenticated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isAdmin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is an admin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the user to delete.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the userDelete function in the adminController.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".GETadmin/"><span class="type-signature type-signature-static">(static) </span>GET admin/<span class="signature">(ensureAuthenticated, isAdmin, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for rendering the admin overview page.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ensureAuthenticated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is authenticated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isAdmin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is an admin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that renders the admin overview page.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".POST/addSection"><span class="type-signature type-signature-static">(static) </span>POST /addSection<span class="signature">(callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for adding a new section.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line205">line 205</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the create function of the Section model and redirects to the admin page.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".POST/changeRole"><span class="type-signature type-signature-static">(static) </span>POST /changeRole<span class="signature">(check, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for changing a user's role.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>check</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that validates the input.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID to modify the role of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>role</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new role of the user.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the changeRole function in the adminController.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".POST/changeSectionInstructor"><span class="type-signature type-signature-static">(static) </span>POST /changeSectionInstructor<span class="signature">(check, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for changing the instructor of a section.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>check</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that validates the input.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sectionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the section to modify the instructor of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>instructor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the new instructor of the section.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the changeSectionInstructor function in the adminController.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".POST/deletePtrackerData"><span class="type-signature type-signature-static">(static) </span>POST /deletePtrackerData<span class="signature">(ensureAuthenticated, isAdmin, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for handling the deletion of PTracker data.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ensureAuthenticated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is authenticated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isAdmin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is an admin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the resetPtracker function in the adminController.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".POST/siteDelete/:id"><span class="type-signature type-signature-static">(static) </span>POST /siteDelete/:id<span class="signature">(isInstructor, id, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Route for deleting a site.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_adminRoutes.js.html">routes/adminRoutes.js</a>, <a href="routes_adminRoutes.js.html#line190">line 190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isInstructor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">middleware</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Middleware function that ensures the user is an instructor.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the site to delete.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function that calls the delete function of the Site model and redirects to the admin page.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 01:25:01 GMT-0700 (Pacific Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

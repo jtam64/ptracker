@@ -29,7 +29,8 @@ services:
       MARIADB_PASSWORD: Columbiabc1!
       MARIADB_DATABASE: ptracker
       MARIADB_ROOT_HOST: db
-      APP_URL: http://localhost
+      APP_URL: http://localhost:8007
+      GIT_TAG: "0.0.0" #dev
     ports:
       - 8007:8007
     depends_on:

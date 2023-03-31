@@ -1,9 +1,16 @@
+/**
+  *Class representing a Site.
+  *@class
+  */
 const {PrismaClient} = require("@prisma/client");
 
-module.exports = class Site {
+module.exports = class Site {static prisma = new PrismaClient();
 
-    static prisma = new PrismaClient();
-
+    /**
+     * Finds a site by ID.
+     * @param {number} id - The ID of the site.
+     * @returns {Object} - Returns the site object.
+     */
     static find = async (id) => {
         return await Site.prisma.site.findUnique({
             where: {
@@ -14,7 +21,11 @@ module.exports = class Site {
             }
         })
     }
-
+    
+    /**
+     * Returns all the sites.
+     * @returns {Array} - Returns an array of site objects.
+     */
     static all = async () => {
         return await Site.prisma.site.findMany({
             include: {
@@ -22,7 +33,12 @@ module.exports = class Site {
             }
         });
     }
-
+    
+    /**
+     * Creates a new site.
+     * @param {Object} data - An object containing the site information.
+     * @returns {Object} - Returns the created site object.
+     */
     static create = async (data) => {
         return await Site.prisma.site.create({
             data: {
@@ -30,7 +46,12 @@ module.exports = class Site {
             }
         });
     }
-
+    
+    /**
+     * Deletes a site by ID.
+     * @param {number} id - The ID of the site to be deleted.
+     * @returns {Object} - Returns the deleted site object.
+     */
     static delete = async (id) => {
         // Adds the shifts to pending for admin approval
         const findSite = await Site.find(id)
@@ -46,7 +67,7 @@ module.exports = class Site {
                 })
             }
         };
-
+    
         return await Site.prisma.site.update({
             where: {
                 id: parseInt(id)
@@ -56,5 +77,4 @@ module.exports = class Site {
             }
         });
     }
-
-}
+}    

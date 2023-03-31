@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "tailwind": "npx tailwindcss -i ./public/style.css -o ./public/stylesheets/tailwind.css --watch",
-    "test": "mocha"
+    "docs": "jsdoc --configure ./jsdocConf.json",
+    "test": "mocha tests"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -23,6 +24,7 @@
     "core-util-is": "^1.0.3",
     "cors": "^2.8.5",
     "date-holidays": "^3.14.2",
+    "docdash": "^2.0.1",
     "dotenv": "^14.3.2",
     "ejs": "^3.1.7",
     "express": "~4.17.2",
@@ -41,6 +43,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "jsdoc": "^4.0.2",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.20",
     "postcss": "^8.4.6",

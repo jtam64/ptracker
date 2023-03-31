@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>routes/shiftRoutes.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module.exports.html#getAdminRecipients">getAdminRecipients</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#getSectionInstructorRecipient">getSectionInstructorRecipient</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isInstructor">isInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isStudent">isStudent</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#send">send</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToAdmins">sendToAdmins</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToSectionInstructor">sendToSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.ensureAuthenticated">ensureAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.forwardIfAuthenticated">forwardIfAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAuthenticated">isAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isInstructor">isInstructor</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="module-app.html">app</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-app.html#.setviewengine">set view engine</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.use404errorhandler">use 404 error handler</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecookieSession">use cookieSession</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecors">use cors</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useejsLayouts">use ejsLayouts</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usejson">use json</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usepassport">use passport</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useurlencoded">use urlencoded</a></li></ul></li><li><a href="module-routes_admin.html">routes/admin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.DELETE/deleteSection/:id/:length">DELETE /deleteSection/:id/:length</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/resetPtracker">GET /resetPtracker</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/userDelete/:id">GET /userDelete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GETadmin/">GET admin/</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/addSection">POST /addSection</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeRole">POST /changeRole</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeSectionInstructor">POST /changeSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/deletePtrackerData">POST /deletePtrackerData</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/siteDelete/:id">POST /siteDelete/:id</a></li></ul></li><li><a href="module-routes_authRoutes.html">routes/authRoutes</a></li><li><a href="module-routes_dataRoutes.html">routes/dataRoutes</a></li><li><a href="module-routes_emailRoutes.html">routes/emailRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/changeEmailStatus/:userId">POST email/changeEmailStatus/:userId</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/instructorDeleted">POST email/instructorDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/newUser">POST email/newUser</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftCreated">POST email/shiftCreated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftDeleted">POST email/shiftDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftUpdated">POST email/shiftUpdated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/userAssignedSection">POST email/userAssignedSection</a></li></ul></li><li><a href="module-routes_indexRoutes.html">routes/indexRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~convertMonth">convertMonth</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findMainSite">findMainSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findNameOfSite">findNameOfSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~getShifts">getShifts</a></li></ul></li><li><a href="module-routes_instructorRoutes.html">routes/instructorRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.GETinstructor/">GET instructor/</a></li><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.POSTinstructor/changeSection">POST instructor/changeSection</a></li></ul></li><li><a href="module-routes_shiftRoutes.html">routes/shiftRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.DELETE/shifts/delete/:id">DELETE /shifts/delete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.POST/shifts/">POST /shifts/</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.PUT/shifts/:id">PUT /shifts/:id</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#flashMessages">flashMessages</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#ndaChecker">ndaChecker</a></li><li><a href="global.html#passUser">passUser</a></li><li><a href="global.html#sectionChecker">sectionChecker</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">routes/shiftRoutes.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview This file exports an Express router that handles shift-related routes.
+ * @module routes/shiftRoutes
+ */
+
+const express = require('express');
+const router = express.Router();
+
+const {check, validationResult} = require('express-validator');
+const shiftController = require('../controllers/shiftController');
+
+/**
+ * Route for creating a new shift.
+ * @name POST /shifts/
+ * @function
+ * @memberof module:routes/shiftRoutes
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ * @returns {Promise} Promise representing the result of the create operation.
+ */
+router.post(
+    '/',
+    [
+        check('userId').isInt(),
+        check('siteId').isInt(),
+        check('date').isDate({
+            format: 'YYYY-MM-DD'
+        }),
+        check('type').isIn(['DAY', 'EVENING', 'NIGHT']),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            let err = '';
+            for (const error of errors.array()) {
+                err += `invalid value for ${error.param}`;
+            }
+            req.session.error_message = `Invalid shift data: ${err}!`;
+            return res.redirect('././calendar');
+        }
+
+        return shiftController.create(req, res, req.body);
+    }
+);
+
+/**
+ * Route for updating an existing shift.
+ * @name PUT /shifts/:id
+ * @function
+ * @memberof module:routes/shiftRoutes
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ * @returns {Promise} Promise representing the result of the update operation.
+ */
+router.put(
+    '/:id',
+    [
+        check('userId').isInt(),
+        check('siteId').isInt(),
+        check('date').isDate(),
+        check('type').isIn(['DAY', 'EVENING', 'NIGHT']),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            let err = '';
+            for (const error of errors.array()) {
+                err += `invalid value for ${error.param}`;
+            }
+            req.session.error_message = `Invalid shift data: ${err}!`;
+            return res.redirect('././calendar');
+        }
+
+        return shiftController.update(req, res, req.params.id, req.body);
+    }
+);
+
+/**
+ * Route for deleting an existing shift.
+ * @name DELETE /shifts/delete/:id
+ * @function
+ * @memberof module:routes/shiftRoutes
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ * @returns {Promise} Promise representing the result of the delete operation.
+ */
+router.delete(
+    '/delete/:id',
+    async (req, res) => {
+        return shiftController.del(req, res, req.params.id, req.user);
+    }
+);
+
+module.exports = router;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 01:25:01 GMT-0700 (Pacific Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

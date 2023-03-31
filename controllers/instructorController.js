@@ -9,7 +9,7 @@ const axios = require("axios");
 const Section = require("../models/section");
 const User = require("../models/user");
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 async function changeSection(req, res, userId, newSection) {
     const section = await Section.find(newSection);
     if (!section) {

@@ -18,6 +18,7 @@ if [ "${DEBUG}" == "true" ]; then echo -e " \
     \n  MARIADB_PASSWORD: $MARIADB_PASSWORD \
     \n  MARIADB_DATABASE: $MARIADB_DATABASE \
     \n  APP_URL: $APP_URL \
+    \n  GIT_TAG: $GIT_TAG \
     \n";
 fi
 

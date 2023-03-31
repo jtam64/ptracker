@@ -29,7 +29,7 @@
         <script type="text/javascript" charset="utf8" src="./js/dataTables.min.js"></script>
         <script src="../js/scripts.js"></script>
         <!-- <script src="./js/theme.js"></script> -->
-        
+
 
         <% if (locals.page) { %>
             <% if (page === 'calendar') { %>
@@ -50,7 +50,6 @@
         <% } %>
     </head>
     <body>
-        <%- include("../partials/navbar") -%>
 
         <div class="container mx-auto pt-8 t_margin">
             <%- include("../partials/messages") %>
@@ -59,7 +58,7 @@
 
 <% include ('./sectionFunctions') %>
 
-<a href="/section" class="btn btn-danger d-block mx-auto my-4 py-1.5 px-4 rounded-pill"> Back </a>
+<a href="../section" class="btn btn-danger d-block mx-auto my-4 py-1.5 px-4 rounded-pill"> Back </a>
 
 <table class="table table-bordered table-striped">
     <h1 class="fw-bold fs-3 text-center pb-2">Shifts for: <%= student.name %></h1>
@@ -83,7 +82,7 @@
         </tr>
     </thead>
     <tbody>
-        <form id="addForm" action="<%= "/update/" + student.id %>" method="POST">
+        <form id="addForm" action="<%= "../update/" + student.id %>" method="POST">
             <% for (const num in student.shifts) { %>
                 <% if (checkShiftDay(student.shifts[num])) { %>
                     <% if (student.shifts[num].status === 'NORMAL') { %>
@@ -155,6 +154,9 @@
             format: "yyyy-mm-dd",
         });
     });
+
+    const navbar = document.getElementById("mainNav");
+    navbar.remove();
 
     function openModal(key, form, button, studentID, shiftID) {
         document.getElementById(key).style.display = "block";

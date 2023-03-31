@@ -102,11 +102,9 @@
                     </td>
                     <td>
                         <button title="Delete" id="userDeleteButton" onclick="deleteModalUser(<%= siteUser.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
-                            <!-- Creates a button to delete the user, which when clicked calls the "deleteModalUser" function with the user's ID -->
-                            <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
-                            </svg>
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Delete Icon" class="ml-auto w-5 h-5 cursor-pointer delete_btns">
                         </button>
+                        
                     </td>
                 </tr>
             <% } %>
@@ -140,10 +138,7 @@
                         <!-- Displays the section that the instructor is teaching -->
                         <td>
                             <button title="Delete" id="instructorDeleteButton" onclick="deleteModalInstructor(<%= instructor.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
-                                 <!-- Creates a button to delete the instructor, which when clicked calls the "deleteModalInstructor" function with the instructor's ID -->
-                                <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
-                                </svg>
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Delete Icon" class="ml-auto w-5 h-5 cursor-pointer delete_btns">
                             </button>
                         </td>
                     </tr>
@@ -157,7 +152,7 @@
     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3Btn">
         <!-- Creates a table to display the list of sites -->
 
-        <div class="d-flex justify-content-end pt-2.5 pb-2.5">
+        <div id="addSiteModalButton" class="d-flex justify-content-end pt-2.5 pb-2.5">
             <button onclick="addSiteModal()" class="btn btn-primary rounded-pill py-1.5 px-4 me-3">Add Site</button>
         </div>
 
@@ -179,13 +174,8 @@
                         <td><%= site.name %></td>
                         <!-- Displays the name of the site -->
                         <td class="flex">
-                            <button title="Delete" onclick="deleteModal(<%= site.id %>)" class="border hover:bg-red-500 text-red-500 font-semibold  focus:outline-none py-1.5 px-4 rounded">
-                                <!-- Creates a button to delete the site, which when clicked calls the "deleteModal" function with the site's ID -->
-                                <svg
-                                        class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
-                                </svg>
+                            <button title="Delete" onclick="deleteModal(<%= site.id %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Delete Icon" class="ml-auto w-5 h-5 cursor-pointer delete_btns">
                             </button>
                         </td>
                     </tr>
@@ -199,7 +189,7 @@
     <!-- Sections tab content-->
     <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4Btn">
          <!-- Add Section Button -->
-        <div class="d-flex justify-content-end pt-2.5 pb-2.5">
+        <div id = "addSecModalButton" class="d-flex justify-content-end pt-2.5 pb-2.5">
             <button onclick="addSectionModal()" class="btn btn-primary rounded-pill py-1.5 px-4 me-3">Add Section</button>
         </div>
         <!-- Section Table -->
@@ -242,10 +232,8 @@
                     </td>
                     <td>
                         <!-- Delete Section button -->
-                        <button type="button" title="Delete" id="sectionDeleteButton" onclick="deleteSectionModal(<%= section.id %>, <%= sections.length %>)" class="btn border text-danger font-weight-bold focus:outline-none py-1.5 px-4 rounded">
-                          <svg class="ml-auto fill-current justify-self-end w-5 h-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
-                          </svg>
+                        <button type="button" title="Delete" id="sectionDeleteButton" onclick="deleteSectionModal(<%= section.id %>, <%= sections.length %>)" class="btn btn-outline-danger py-1.5 px-4 rounded">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Delete Icon" class="ml-auto w-5 h-5 cursor-pointer delete_btns">
                         </button>
                       </td>                      
                 </tr>
@@ -305,6 +293,7 @@
 
 
 <script>
+
 //// move to global js file
 ///?????????? might not need this
     function openModal(key) {
@@ -358,7 +347,16 @@
         const form = select.form;
         form.submit();
     }
+
     $(document).ready(() => {
+        // Get tab from url and set active tab
+        let tab = (window.location.href.split('#')[1])
+        if (tab) {
+            $(".active").removeClass("active show");
+            $(`#${tab}Btn`).addClass("active");
+            $(`#${tab}`).addClass("active show");
+        }
+
         $('#user_table').DataTable({
             lengthChange: false,
             columnDefs: [

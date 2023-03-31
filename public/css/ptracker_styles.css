@@ -20,3 +20,86 @@
 .highlighted{
     background: rgba(84, 136, 28, 0.3) !important;
 }
+
+.delete_btns{
+    height: 30px;
+    width: 30px;
+}
+
+/* buttons in admin panel */
+
+#addSecModalButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#addSiteModalButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* filters in admin panel */
+#user_table_filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#instructor_table_filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#section_table_filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* tables in admin panel */
+#section_table {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+#instructor_table {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+#user_table {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+#site_table {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.fc-col-header-cell-cushion{
+    font-size: 13px;
+    color: #2C3E50;
+}
+
+.fc-daygrid-day-number {
+    font-size: 13px;
+    color: #2C3E50;
+    text-decoration: none;
+
+}
+
+.fc .fc-timeline-slot-cushion {
+    font-size: 13px;
+    color: #2C3E50;
+    text-decoration: none;
+}
+
+@media print {
+    body * {
+      display:none;
+    }
+
+    body .printable {
+      display:block;
+    }
+  }

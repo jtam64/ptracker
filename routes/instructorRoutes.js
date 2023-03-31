@@ -1,16 +1,30 @@
+/**
+ * @fileoverview This file exports an Express router that handles instructor-related routes.
+ * @module routes/instructorRoutes
+ */
+
 const express = require('express');
 const router = express.Router();
 
-const {check, validationResult} = require("express-validator");
+const { check, validationResult } = require('express-validator');
 
-const User = require("../models/user");
-const Section = require("../models/section");
-const Site = require("../models/site")
+const User = require('../models/user');
+const Section = require('../models/section');
+const Site = require('../models/site');
 
-const {ensureAuthenticated, isInstructor} = require("../middleware/checkAuth");
+const { ensureAuthenticated, isInstructor } = require('../middleware/checkAuth');
 
-const instructorController = require("../controllers/instructorController");
+const instructorController = require('../controllers/instructorController');
 
+/**
+ * Route for rendering the instructor panel view with a list of all users, sections and sites.
+ * @name GET instructor/
+ * @function
+ * @async
+ * @memberof module:routes/instructorRoutes
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 router.get('/', [ensureAuthenticated, isInstructor], async (req, res) => {
     res.render('././instr_panel', {
         page: 'instr_panel',
@@ -20,6 +34,16 @@ router.get('/', [ensureAuthenticated, isInstructor], async (req, res) => {
     });
 });
 
+/**
+ * Route for changing a user's section.
+ * @name POST instructor/changeSection
+ * @function
+ * @memberof module:routes/instructorRoutes
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {number} req.body.userId - The user id to update the section for.
+ * @param {number} req.body.section - The new section id.
+ */
 router.post(
     '/changeSection',
     [

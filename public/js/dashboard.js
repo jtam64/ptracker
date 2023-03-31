@@ -16,8 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
       printButton: {
         text: 'Print',
         click: function() {
-          window.print();
-          document.margin='none';
+          var newWindow = window.open();
+          newWindow.document.write(document.getElementById("calendar-container").innerHTML);
+          newWindow.print();
+          newWindow.close();
+
         }
       },
       todayButton: {

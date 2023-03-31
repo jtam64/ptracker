@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 const {faker} = require('@faker-js/faker');
 const Role = require('../models/role');
 
+/**
+ * Populates the database with sample data.
+ */
 async function main() {
+    // Create sections
     const sections = [];
 
     sections.push({
@@ -26,6 +30,7 @@ async function main() {
         ]
     });
 
+    // Create users
     const users = [];
 
     for (let i = 1; i < 1; i++) {
@@ -44,14 +49,15 @@ async function main() {
             emailNotifications: faker.datatype.boolean(),
         });
     }
-
+    
+    // Create some predefined users
     users.push({
         id: 101,
         name: 'DEVELOPER',
         email: 'dev@bcit.ca',
         googleId: faker.datatype.number({min: 11491216591676147997, max: 12691216591676147997}).toString(),
         role: Role.ADMIN,
-        sectionId: 2,
+        sectionId: 1,
         acceptedNda: true,
     });
 

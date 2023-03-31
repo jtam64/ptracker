@@ -5,6 +5,9 @@ const Section = require('../models/section');
 
 module.exports = class Email {
 
+    /**
+    * Create nodemailer transporter instance
+    */
     static transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -15,6 +18,12 @@ module.exports = class Email {
         },
     });
     
+    /**
+     * Send email to the recipient
+     * @param {string} recipient - The email recipient
+     * @param {string} subject - The email subject
+     * @param {string} content - The email content
+     */
     static async send(recipient, subject, content) {
         try {
             await Email.transporter.sendMail({
@@ -27,7 +36,12 @@ module.exports = class Email {
             console.error(new Error(error));
         }
     }
-
+    
+    /**
+     * Send email to all admin recipients
+     * @param {string} subject - The email subject
+     * @param {string} content - The email content
+     */
     static async sendToAdmins(subject, content) {
         try {
             await Email.transporter.sendMail({
@@ -41,6 +55,12 @@ module.exports = class Email {
         }
     }
 
+    /**
+     * Send email to the section instructor recipient
+     * @param {number} sectionId - The section id
+     * @param {string} subject - The email subject
+     * @param {string} content - The email content
+     */
     static async sendToSectionInstructor(sectionId, subject, content) {
         const instructorEmail = Email.getSectionInstructorRecipient(sectionId);
 
@@ -60,6 +80,10 @@ module.exports = class Email {
         }
     }
 
+    /**
+     * Get all admin email recipients
+     * @returns {string[]} - The list of admin email recipients
+     */
     static async getAdminRecipients() {
         const adminEmails = [];
         const users = await User.all();
@@ -73,6 +97,11 @@ module.exports = class Email {
         return adminEmails;
     }
 
+    /**
+     * Get the email recipient for the section instructor
+     * @param {number} sectionId - The section id
+     * @returns {string|null} - The email recipient for the section instructor or null if the instructor has email notifications disabled
+     */
     static async getSectionInstructorRecipient(sectionId) {
         const section = await Section.find(parseInt(sectionId));
         const instructor = await User.find(section.instructorId);

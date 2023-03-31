@@ -15,7 +15,7 @@ let url = process.env.APP_URL;
 server.listen(port);
 server.on('listening', () => {
     if (process.env.NODE_ENV !== 'test') {
-        console.log(`Express server running on ${url}:${port}`);
+        console.log(`Express server running on ${url}`);
     }
 });
 

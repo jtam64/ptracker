@@ -66,10 +66,21 @@ async function changeSectionInstructor(req, res, sectionId, newInstructor) {
 
     if (!section) {
         req.session.error_message = `Section #${sectionId} does not exist`;
-        return res.redirect('.././admin');
+        return res.redirect('.././admin#tab4');
     }
 
     try {
+        // Remove the old instructors section
+        const oldInstructor = await Section.findInstructor(sectionId);
+        if (oldInstructor.length !== 0) {
+            await User.prisma.user.update({
+                where: {id: parseInt(oldInstructor[0].id)},
+                data: {
+                    section: {connect: {id: 1}}
+                }
+            })
+        };
+        // Assign the new instructor to the section
         await Section.prisma.section.update({
             where: {id: parseInt(sectionId)},
             data: {
@@ -78,7 +89,7 @@ async function changeSectionInstructor(req, res, sectionId, newInstructor) {
         });
     } catch (e) {
         req.session.error_message = `Instructor #${newInstructor} is already assigned another section`;
-        return res.redirect('.././admin');
+        return res.redirect('.././admin#tab4');
     }
 
     await User.prisma.user.update({
@@ -90,14 +101,22 @@ async function changeSectionInstructor(req, res, sectionId, newInstructor) {
 
     req.session.success_message = `Set instructor of section ${section.name} to #${newInstructor}`;
 
-    return res.redirect('.././admin');
+    return res.redirect('.././admin#tab4');
 }
 
 async function userDelete(req, res, userId) {
     const user = await User.find(userId);
+    let userType = ""
+
+    if (user.isInstructor()) {
+        userType = 'instructor'
+    } else {
+        userType = 'student'
+    };
+
     if (!user) {
         req.session.error_message = `Instructor #${userId} does not exist`;
-        return res.redirect('.././admin');
+        return res.redirect('../../admin');
     }
 
     if (user.shifts.length >= 1) {
@@ -127,7 +146,11 @@ async function userDelete(req, res, userId) {
 
     req.session.success_message = `Successfully deleted ${user.name}.`;
 
-    return res.redirect('.././admin');
+    if (userType === 'instructor') {
+        return res.redirect('../../admin#tab2');
+    } else {
+        return res.redirect('../../admin');
+    }
 }
 
 async function resetPtracker(req, res) {

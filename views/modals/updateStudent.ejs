@@ -1,0 +1,157 @@
+<% include ('../section/sectionFunctions') %>
+<!-- Modal -->
+<div class="modal" id="updateStudent" tabindex="-1" aria-labelledby="updateStudentLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updateStudentLabel">Update Student</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modalClose('updateStudent')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="px-7 pb-3 d-flex justify-content-start align-items-center w-100">
+                <table class="table table-bordered table-striped">
+                    <h1 class="fw-bold fs-3 text-center pb-2">Shifts for: <%= student.name %></h1>
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="border-0">
+                                ShiftID
+                            </th>
+                            <th class="border-0">
+                                Shift Date
+                            </th>
+                            <th class="border-0">
+                                Shift Type
+                            </th>
+                            <th class="border-0">
+                                Site
+                            </th>
+                            <th class="border-0">
+                                Delete Shift
+                            </th>
+                        </tr>
+                    </thead>
+            </div>
+            <!-- Beginning of Form content -->
+            <form id="addForm" action="<%= "../update/" + student.id %>" method="POST">
+                <% for (const num in student.shifts) { %>
+                    <% if (checkShiftDay(student.shifts[num])) { %>
+                        <% if (student.shifts[num].status === 'NORMAL') { %>
+                            <tr>
+                                <td class="border-start-0 border-end-0"><input name="shiftID" value="<%= student.shifts[num].id %>" readonly></td>
+                                <td class="border-start-0 border-end-0"> <input class="datepick form-control" type="text" id="<%= "datepicker" + num %>" name="date" value="<%= student.shifts[num].date.toISOString().split('T')[0] %>"> </td>
+                                <td class="border-start-0 border-end-0">
+                                    <select value="<%= student.shifts[num].type %>" name="shiftType" class="form-select mb-3">
+                                        <% if (student.shifts[num].type === 'DAY') { %>
+                                            <option value="<%= student.shifts[num].type %>"> <%= student.shifts[num].type %> </option>
+                                            <option value="EVENING">EVENING</option>
+                                            <option value="NIGHT">NIGHT</option>
+                                            <option value="SICK">SICK</option>
+                                        <% } %>
+                                        <% if (student.shifts[num].type === 'EVENING') { %>
+                                            <option value="<%= student.shifts[num].type %>"> <%= student.shifts[num].type %> </option>
+                                            <option value="DAY">DAY</option>
+                                            <option value="NIGHT">NIGHT</option>
+                                            <option value="SICK">SICK</option>
+                                        <% } %>
+                                        <% if (student.shifts[num].type === 'NIGHT') { %>
+                                            <option value="<%= student.shifts[num].type %>"> <%= student.shifts[num].type %> </option>
+                                            <option value="DAY">DAY</option>
+                                            <option value="EVENING">EVENING</option>
+                                            <option value="SICK">SICK</option>
+                                        <% } %>
+                                        <% if (student.shifts[num].type === 'SICK') { %>
+                                            <option value="<%= student.shifts[num].type %>"> <%= student.shifts[num].type %> </option>
+                                            <option value="DAY">DAY</option>
+                                            <option value="NIGHT">NIGHT</option>
+                                            <option value="EVENING">EVENING</option>
+                                        <% } %>
+                                    </select>
+                                </td>
+                                <td class="text-center border border-solid border-dark">
+                                    <select value="<%= student.section.id %>" name="site" class="form-select form-control mb-3">
+                                        <% for (const site of sites) { %>
+                                            <% if (student.shifts[num].siteId === site.id && site.status !== 'DELETED' && student.shifts[num].status !== 'DELETED') { %>
+                                                <option value="<%= site.id %>"> <%= site.name %> </option>
+                                            <% } %>
+                                        <% } %>
+                                        <% for (const site of sites) { %>
+                                            <% if (site.id !== student.shifts[num].siteId && site.status !== 'DELETED' && student.shifts[num].status !== 'DELETED') { %>
+                                                <option value="<%= site.id %>"> <%= site.name %> </option>
+                                            <% } %>
+                                        <% } %>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="button" title="Remove Shift" onclick="deleteModal(<%= student.shifts[num].id %>, <%= student.id %>)" class="btn btn-danger py-1.5 px-4 rounded">
+                                        ❌
+                                    </button>
+                                </td>
+                                </tr>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+            </form>
+        </table>
+            <!-- Bottom of modal -->
+            <div class="px-7 pt-1 pb-7 d-flex justify-content-start align-items-center w-100">
+                <button type="submit" form="addForm" value="<%= 'Update Shifts' %>" class="w-100 btn btn-danger" id="updateButton">
+                    Delete
+                </button>
+                <button type="button" onclick="modalClose('updateStudent')" class="w-100 btn btn-secondary ms-3">
+                    Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+<%- include("./deleteStudentShift") %>
+
+<script type="text/javascript">
+    $('.datepick').each(function(){
+        $(this).datepicker({
+            format: "yyyy-mm-dd",
+        });
+    });
+
+    const navbar = document.getElementById("mainNav");
+    navbar.remove();
+
+    function openModal(key, form, button, studentID, shiftID) {
+        document.getElementById(key).style.display = "block";
+        document.getElementById(key).children[0].scrollTop = 0;
+        document.getElementById(key).children[0].classList.remove('opacity-0');
+        document.getElementById(key).children[0].classList.add('opacity-100')
+        document.getElementById(form).setAttribute('action', action=`/section/shiftDelete/${studentID}/${shiftID}`)
+    }
+
+    function modalClose(key) {
+        document.getElementById(key).children[0].classList.remove('opacity-100');
+        document.getElementById(key).children[0].classList.add('opacity-0');
+        setTimeout(function () {
+            document.getElementById(key).style.display = "none";
+            document.body.removeAttribute('style');
+        }, 100);
+    }
+
+    function deleteModal(shiftID, studentID) {
+        openModal('deleteShift', 'deleteForm', 'deleteButton', studentID, shiftID)
+    }
+
+</script>
+
+<style>
+    input{
+        border: none;
+    }
+</style>
+
+    
+</div>
+
+</body>
+</html>

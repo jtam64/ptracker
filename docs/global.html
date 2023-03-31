@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module.exports.html#getAdminRecipients">getAdminRecipients</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#getSectionInstructorRecipient">getSectionInstructorRecipient</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isInstructor">isInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#isStudent">isStudent</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#send">send</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToAdmins">sendToAdmins</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#sendToSectionInstructor">sendToSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.ensureAuthenticated">ensureAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.forwardIfAuthenticated">forwardIfAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAdmin">isAdmin</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isAuthenticated">isAuthenticated</a></li><li data-type='method' style='display: none;'><a href="module.exports.html#.isInstructor">isInstructor</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="module-app.html">app</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-app.html#.setviewengine">set view engine</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.use404errorhandler">use 404 error handler</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecookieSession">use cookieSession</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usecors">use cors</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useejsLayouts">use ejsLayouts</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usejson">use json</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.usepassport">use passport</a></li><li data-type='method' style='display: none;'><a href="module-app.html#.useurlencoded">use urlencoded</a></li></ul></li><li><a href="module-routes_admin.html">routes/admin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.DELETE/deleteSection/:id/:length">DELETE /deleteSection/:id/:length</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/resetPtracker">GET /resetPtracker</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GET/userDelete/:id">GET /userDelete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.GETadmin/">GET admin/</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/addSection">POST /addSection</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeRole">POST /changeRole</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/changeSectionInstructor">POST /changeSectionInstructor</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/deletePtrackerData">POST /deletePtrackerData</a></li><li data-type='method' style='display: none;'><a href="module-routes_admin.html#.POST/siteDelete/:id">POST /siteDelete/:id</a></li></ul></li><li><a href="module-routes_authRoutes.html">routes/authRoutes</a></li><li><a href="module-routes_dataRoutes.html">routes/dataRoutes</a></li><li><a href="module-routes_emailRoutes.html">routes/emailRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/changeEmailStatus/:userId">POST email/changeEmailStatus/:userId</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/instructorDeleted">POST email/instructorDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/newUser">POST email/newUser</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftCreated">POST email/shiftCreated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftDeleted">POST email/shiftDeleted</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/shiftUpdated">POST email/shiftUpdated</a></li><li data-type='method' style='display: none;'><a href="module-routes_emailRoutes.html#.POSTemail/userAssignedSection">POST email/userAssignedSection</a></li></ul></li><li><a href="module-routes_indexRoutes.html">routes/indexRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~convertMonth">convertMonth</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findMainSite">findMainSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~findNameOfSite">findNameOfSite</a></li><li data-type='method' style='display: none;'><a href="module-routes_indexRoutes.html#~getShifts">getShifts</a></li></ul></li><li><a href="module-routes_instructorRoutes.html">routes/instructorRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.GETinstructor/">GET instructor/</a></li><li data-type='method' style='display: none;'><a href="module-routes_instructorRoutes.html#.POSTinstructor/changeSection">POST instructor/changeSection</a></li></ul></li><li><a href="module-routes_shiftRoutes.html">routes/shiftRoutes</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.DELETE/shifts/delete/:id">DELETE /shifts/delete/:id</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.POST/shifts/">POST /shifts/</a></li><li data-type='method' style='display: none;'><a href="module-routes_shiftRoutes.html#.PUT/shifts/:id">PUT /shifts/:id</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#flashMessages">flashMessages</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#ndaChecker">ndaChecker</a></li><li><a href="global.html#passUser">passUser</a></li><li><a href="global.html#sectionChecker">sectionChecker</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="flashMessages"><span class="type-signature"></span>flashMessages<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Middleware function that checks if there are flash messages in the session object
+and assigns them to res.locals to be used in the view. Deletes the messages from the session
+object after they have been assigned to res.locals.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware_flashMessages.js.html">middleware/flashMessages.js</a>, <a href="middleware_flashMessages.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express request object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express response object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express next middleware function</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="main"><span class="type-signature type-signature-async">(async) </span>main<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Populates the database with sample data.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="prisma_seed.js.html">prisma/seed.js</a>, <a href="prisma_seed.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="ndaChecker"><span class="type-signature"></span>ndaChecker<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Middleware that checks if the user has accepted the NDA.
+If the user has not accepted the NDA and the path is not related to the NDA or authentication, the user is redirected to the NDA page.
+If the user is not logged in, the request is passed to the next middleware.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware_ndaChecker.js.html">middleware/ndaChecker.js</a>, <a href="middleware_ndaChecker.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Request</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The request object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The response object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NextFunction</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The next middleware function to be called.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The next middleware function or a redirect response.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="passUser"><span class="type-signature"></span>passUser<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Middleware to pass the current authenticated user to the view</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware_passUser.js.html">middleware/passUser.js</a>, <a href="middleware_passUser.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express request object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express response object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express next middleware function</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sectionChecker"><span class="type-signature"></span>sectionChecker<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Middleware that checks if a user has permission to access a section.
+Redirects to the &quot;pendingSection&quot; page if the user's section is pending and they are not an admin.
+Excludes the &quot;auth&quot;, &quot;pendingSection&quot;, and &quot;nda&quot; pages from checking.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware_sectionChecker.js.html">middleware/sectionChecker.js</a>, <a href="middleware_sectionChecker.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express request object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express response object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express next middleware function.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 01:25:01 GMT-0700 (Pacific Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
