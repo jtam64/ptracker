@@ -56,18 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
             printButton: {
                 text: 'Print',
                 click: function() {
-                    var newWindow = window.open();
-                    var html = '<html><head><style>' +
-                    '.fc-scrollgrid-sync-inner{ width: 150;} .fc-daygrid-day { border: 1px solid black;} .fc-scroller-harness { border: 1px solid black;}' +
-                    '</style></head><body>' +
-                    '<div id="content">' +
-                    document.getElementById("container-app").innerHTML +
-                    '</div></body></html>';
-
-                    newWindow.document.write(html);
-                    
-                    newWindow.print();
-                    newWindow.close();
+                    var printContents = document.getElementById("container-app").outerHTML;
+                    var originalContents = document.body.outerHTML;
+               
+                    document.body.outerHTML = printContents;
+               
+                    window.print();
+               
+                    document.body.outerHTML = originalContents;
                 }
             },
             todayButton: {

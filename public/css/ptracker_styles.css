@@ -94,12 +94,15 @@
     text-decoration: none;
 }
 
-@media print {
-    body * {
-      display:none;
-    }
 
-    body .printable {
-      display:block;
-    }
-  }
+.printme {
+	display: block;
+}
+@media print {
+	.no-printme  {
+		display: none;
+	}
+	.printme  {
+		display: block;
+	}
+}

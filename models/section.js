@@ -58,6 +58,12 @@ module.exports = class Section {
         });
     }
 
+    static findIDByName = async(sectionName) => {
+        return await Section.prisma.section.findMany({
+            where: {name: sectionName},
+        });
+    }
+
     /**
      * Deletes a section and updates all associated users to have section ID 1 (pending).
      * @param {number} sectionId - The ID of the section to delete.

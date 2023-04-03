@@ -213,7 +213,8 @@ router.post('/siteDelete/:id', isInstructor, async (req, res) => {
 
 router.post('/addSection', async (req, res) => {
     await Section.create(req.body.sectionName, req.body.sectionInstructor);
-    res.redirect('.././admin#tab4');
+    const sectionID = await Section.findIDByName(req.body.sectionName);
+    await adminController.changeSectionInstructor(req, res, parseInt(sectionID[0].id), req.body.sectionInstructor)
 });
 
 /**
